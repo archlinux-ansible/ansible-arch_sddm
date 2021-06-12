@@ -1,0 +1,21 @@
+---
+
+- name: Ensure SDDM installed
+  pacman:
+    name: sddm
+    state: present
+
+- name: Create SDDM config
+  template:
+    src: sddm.conf.j2
+    dest: "{{ sddm__config_path }}"
+
+- name: Create SDDM theme config
+  template:
+    src: sddm-theme.conf.j2
+    dest: "{{ sddm__user_theme_config_path }}"
+
+- name: Ensure service enabled
+  service:
+    name: sddm
+    enabled: yes

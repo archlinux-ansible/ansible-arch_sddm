@@ -1,0 +1,17 @@
+---
+
+sddm__theme: aerial
+sddm__config_path: /etc/sddm.conf.d/10_ansible.conf
+sddm__config:
+  Theme:
+    Current: "{{ sddm_theme }}"
+sddm__user_theme_config_path: "/usr/share/sddm/themes/{{ sddm_theme }}/theme.conf.user"
+sddm__user_theme_config:
+  General:
+    background_day: playlist_day.m3u
+    background_night: playlist_night.m3u
+    displayFont: Monospace
+    showLoginButton: false
+    passwordLeftMargin: '15'
+    usernameLeftMargin: '15'
+    showTopBar: yes
