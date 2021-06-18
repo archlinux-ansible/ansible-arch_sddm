@@ -6,14 +6,40 @@
     state: present
 
 - name: Create SDDM config
-  template:
-    src: sddm.conf.j2
-    dest: "{{ sddm__config_path }}"
+  block:
+    - name: Create SDDM config folder
+      file:
+        path: "{{ sddm__config_path | dirname }}"
+        state: directory
+        recurse: yes
+        owner: root
+        group: root
+        mode: '0755'
+    - name: Create SDDM config file
+      template:
+        src: sddm.conf.j2
+        dest: "{{ sddm__config_path }}"
+        owner: root
+        group: root
+        mode: '0644'
 
 - name: Create SDDM theme config
-  template:
-    src: sddm-theme.conf.j2
-    dest: "{{ sddm__user_theme_config_path }}"
+  block:
+    - name: Create SDDM theme config folder
+      file:
+        path: "{{ sddm__user_theme_config_path | dirname }}"
+        state: directory
+        recurse: yes
+        owner: root
+        group: root
+        mode: '0755'
+    - name: Create SDDM theme config file
+      template:
+        src: sddm-theme.conf.j2
+        dest: "{{ sddm__user_theme_config_path }}"
+        owner: root
+        group: root
+        mode: '0644'
 
 - name: Ensure service enabled
   service:
