@@ -10,8 +10,9 @@ sddm__user_theme_config:
   General:
     background_day: playlist_day.m3u
     background_night: playlist_night.m3u
-    displayFont: Monospace
+    displayFont: SF Pro Display
     showLoginButton: false
     passwordLeftMargin: '15'
     usernameLeftMargin: '15'
     showTopBar: true
+sddm__service: sddm-plymouth

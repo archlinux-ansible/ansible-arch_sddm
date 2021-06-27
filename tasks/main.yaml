@@ -43,5 +43,5 @@
 
 - name: Ensure service enabled
   service:
-    name: sddm
+    name: "{{ sddm__service }}"
     enabled: yes
